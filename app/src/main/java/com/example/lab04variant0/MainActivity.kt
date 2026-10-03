@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lab04variant0.ui.theme.Lab04Variant0Theme
@@ -29,5 +30,56 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LabScreen(modifier: Modifier = Modifier) {
+    var xText by remember { mutableStateOf("") }
+    var nText by remember { mutableStateOf("") }
+    var resultText by remember { mutableStateOf("") }
 
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Лабораторная работа №4. Вариант 0",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "S = x/4! + x/5! + ... + x/n!",
+            fontSize = 16.sp
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        OutlinedTextField(
+            value = xText,
+            onValueChange = { xText = it },
+            label = { Text("Число x") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = nText,
+            onValueChange = { nText = it },
+            label = { Text("Натуральное n (n >= 4)") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = {
+            /* Логика будет добавлена позже */
+        }) {
+            Text("OK")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = resultText,
+            fontSize = 18.sp
+        )
+    }
 }
