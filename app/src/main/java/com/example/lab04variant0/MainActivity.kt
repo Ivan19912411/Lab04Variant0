@@ -28,6 +28,19 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Вычисление факториала n! через цикл for.
+ * Пример: factorial(5) = 1 * 2 * 3 * 4 * 5 = 120.0
+ * Возвращает Double, чтобы избежать переполнения при больших n.
+ */
+fun factorial(n: Int): Double {
+    var result = 1.0
+    for (i in 2..n) {
+        result *= i
+    }
+    return result
+}
+
 @Composable
 fun LabScreen(modifier: Modifier = Modifier) {
     var xText by remember { mutableStateOf("") }
@@ -70,7 +83,7 @@ fun LabScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = {
-            /* Логика будет добавлена позже */
+
         }) {
             Text("OK")
         }
