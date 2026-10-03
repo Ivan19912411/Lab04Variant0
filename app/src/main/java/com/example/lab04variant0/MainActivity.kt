@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lab04variant0.ui.theme.Lab04Variant0Theme
@@ -83,17 +84,14 @@ fun LabScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = {
-
             val x = xText.trim().toDoubleOrNull()
             val n = nText.trim().toIntOrNull()
-
 
             if (x == null) {
                 resultText = "Ошибка: введите корректное число x"
             } else if (n == null || n < 4) {
                 resultText = "Ошибка: n должно быть натуральным числом >= 4"
             } else {
-
                 var sum = 0.0
                 var lastTerm = 0.0
                 var count = 0
@@ -103,7 +101,6 @@ fun LabScreen(modifier: Modifier = Modifier) {
                     sum += lastTerm
                     count++
                 }
-
 
                 resultText = "Сумма S = $sum\n" +
                         "Последнее слагаемое = $lastTerm\n" +
@@ -119,5 +116,15 @@ fun LabScreen(modifier: Modifier = Modifier) {
             text = resultText,
             fontSize = 18.sp
         )
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun LabScreenPreview() {
+    Lab04Variant0Theme {
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            LabScreen(modifier = Modifier.padding(innerPadding))
+        }
     }
 }
