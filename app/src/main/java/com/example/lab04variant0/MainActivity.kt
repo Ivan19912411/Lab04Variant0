@@ -84,6 +84,31 @@ fun LabScreen(modifier: Modifier = Modifier) {
 
         Button(onClick = {
 
+            val x = xText.trim().toDoubleOrNull()
+            val n = nText.trim().toIntOrNull()
+
+
+            if (x == null) {
+                resultText = "Ошибка: введите корректное число x"
+            } else if (n == null || n < 4) {
+                resultText = "Ошибка: n должно быть натуральным числом >= 4"
+            } else {
+
+                var sum = 0.0
+                var lastTerm = 0.0
+                var count = 0
+
+                for (k in 4..n) {
+                    lastTerm = x / factorial(k)
+                    sum += lastTerm
+                    count++
+                }
+
+
+                resultText = "Сумма S = $sum\n" +
+                        "Последнее слагаемое = $lastTerm\n" +
+                        "Количество итераций = $count"
+            }
         }) {
             Text("OK")
         }
